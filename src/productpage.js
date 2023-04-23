@@ -88,6 +88,10 @@ function PictureGallery(props) {
 
   function handlePay() {
     setCartItems([]);
+    const remainingPictures = pictures.filter(picture => !cartItems.includes(picture));
+    // update the pictures array with the remaining pictures
+    pictures.length = 0;
+    pictures.push(...remainingPictures);
   }
 
   const totalAmount = cartItems.reduce((acc, item) => acc + item.price, 0);
